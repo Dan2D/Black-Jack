@@ -102,10 +102,20 @@ var scoreCnt = function(card){
 
 var getScore = function(hand){
   let score = 0,
-  hasAce = false;
+  hasAce = 0;
 //Easier way to access object properties from array w/o running into undefined errors
   for (i=0; i < hand.length; i++){
     score += scoreCnt(hand[i][0]);
+
+//Checks if Aces should be counted as 11 (10+1) or 1 based on overall score
+    if(hand[i][0].value === 'Ace' && score + 10 <=21){
+        hasAce += 1;
+        score += 10;
+    }
+    if (hasAce > 0 && score > 21){
+        score -= 10*hasAce;
+        hasAce-= 1;
+    }
   }
   return score;
 }
