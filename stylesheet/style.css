@@ -1,0 +1,10 @@
+.start{
+    display:inline-block;
+}
+.hit, .stay{
+    display:none;
+}
+
+.gameStatus {
+    font-size: 20px;
+}
